@@ -1,0 +1,32 @@
+version: "2.3"
+
+services:
+  wordpress:
+    image: thunderblog-local
+    environment:
+      - WORDPRESS_DB_HOST=mariadb
+      - WORDPRESS_DB_USER=wordpress
+      - WORDPRESS_DB_PASSWORD=wordpress
+      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DEBUG=1
+    ports:
+      - "8080:80"
+      - "9003"
+    volumes:
+      - ./wordpress:/var/www/html
+      - ../thunderblog/:/var/www/html/wp-content/themes/thunderblog/
+
+  mariadb:
+    image: mariadb
+    environment:
+      - MARIADB_DATABASE=wordpress
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_USER=wordpress
+      - MARIADB_PASSWORD=wordpress
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db-data:
