@@ -2,7 +2,8 @@ version: "2.3"
 
 services:
   wordpress:
-    image: thunderblog-local
+    build:
+      context: .
     environment:
       - WORDPRESS_DB_HOST=mariadb
       - WORDPRESS_DB_USER=wordpress

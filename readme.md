@@ -1,14 +1,8 @@
 # Thunderblog Local
 
-To get started build the docker image locally by using the following command:
+Simply run this command to build and bring up thunderblog:
 ```
-docker build -t thunderblog-local .
-```
-
-Then simply use docker-compose to start it up!
-
-```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 ## Wordpress Installation
